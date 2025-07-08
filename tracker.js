@@ -1,5 +1,6 @@
 const oc = console;
-export async function fetchAdapter(traceId, payload) {
+export function fetchAdapter(url) {
+  return async (traceId, payload) => {
   try {
     const response = await fetch("/api/logs", {
       method: "POST",
@@ -17,6 +18,7 @@ export async function fetchAdapter(traceId, payload) {
   } catch (err) {
     console.warn("ErrorTracker: Network error sending logs:", { err });
   }
+}
 }
 
 export async function test(traceId, payload) {
@@ -134,6 +136,6 @@ export class ErrorTracker {
 
 export const WebTracker = (apiUrl, maxLogs = 25) =>
   new ErrorTracker({
-    sendFunction: fetchAdapter,
+    sendFunction: fetchAdapter(apiUrl),
     traceIdFunction: webTraceIdFunction,
   });
