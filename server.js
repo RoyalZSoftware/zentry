@@ -4,6 +4,12 @@ const fs = require('fs');
 const PORT = 8080;
 
 const server = http.createServer((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-trace-id');
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204).end();
+    return;
+  }
   if (req.method === 'GET' && req.url === '/tracker.js') {
     fs.readFile('tracker.js', (err, data) => {
       if (err) {
