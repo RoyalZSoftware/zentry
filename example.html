@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example HTML</title>
+</head>
+
+<body>
+    <p>Hallo</p>
+    <script type="module">
+        import { WebTracker } from '../index.js';
+        WebTracker('https://logs.example.royalzsoftware.de')
+
+        for (let i = 0; i != 25; i++) {
+
+            console.time("User creation");
+            console.debug("Hallo Welt");
+            console.info("TEst");
+            console.timeEnd("User creation");
+        }
+        throw new Error("HelloW orld");
+    </script>
+</body>
+
+</html>
