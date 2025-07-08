@@ -134,6 +134,6 @@ export class ErrorTracker {
 
 export const WebTracker = (apiUrl, maxLogs = 25) =>
   new ErrorTracker({
-    sendFunction: test,
+    sendFunction: fetchAdapter,
     traceIdFunction: webTraceIdFunction,
   });
