@@ -2,7 +2,7 @@ const oc = console;
 export function fetchAdapter(url) {
   return async (traceId, payload) => {
   try {
-    const response = await fetch("/api/logs", {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
