@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Login to the registry
+      run: docker login -u ${{github.actor}} ${{secrets.GITHUB_TOKEN}} 
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag royalzsoftware/zentry:latest
+    - name: Push the docker image
+      run: docker push oyalzsoftware/zentry:latest
