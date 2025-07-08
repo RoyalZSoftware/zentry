@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Login to the registry
-      run: echo ${{secrets.GITHUB_TOKEN}} | docker login -u ${{github.actor}} --password-stdin
+      run: echo ${{secrets.GITHUB_TOKEN}} | docker login -u ${{github.actor}} --password-stdin ghcr.io
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag royalzsoftware/zentry:latest
+      run: docker build . --file Dockerfile --tag royalzsoftware/zentry:latest 
     - name: Push the docker image
       run: docker push oyalzsoftware/zentry:latest
