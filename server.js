@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
       const traceId = req.headers['x-trace-id'] || 'unknown-trace-id';
 
       try {
-        const { payload } = JSON.parse(body);
+        const payload = JSON.parse(body);
 
         // 1. recentLogs einzeln loggen
         if (Array.isArray(payload?.recentLogs)) {
