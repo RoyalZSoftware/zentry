@@ -25,4 +25,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag royalzsoftware/zentry:latest 
     - name: Push the docker image
-      run: docker push royalzsoftware/zentry:latest
+      run: docker push ghcr.io/royalzsoftware/zentry:latest
